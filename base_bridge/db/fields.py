@@ -118,7 +118,9 @@ class SmallIntegerField(models.SmallIntegerField):
 
 
 class TextField(models.TextField):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, null=True, blank=True, *args, **kwargs):
+        kwargs['null'] = null
+        kwargs['blank'] = blank
         super(TextField, self).__init__(*args, **kwargs)
 
 
