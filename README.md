@@ -1,4 +1,4 @@
-# [ Django base bridge ] [docs]
+# [ Django base bridge ]
 
 # 功能概述
 
