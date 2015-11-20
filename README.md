@@ -23,3 +23,16 @@
         python setup.py config
         python setup.py build
         python setup.py install
+
+# 用法
+
+    from base_bridge.db import models
+    from base_bridge.db import fields
+
+
+    class Project(models.Model):
+        class Meta:
+            verbose_name = verbose_name_plural = u'Project'
+    
+        name = fields.CharField(verbose_name=u'名称')
+        desc = fields.TextField(verbose_name=u'描述')
