@@ -26,6 +26,9 @@
 
 # 用法
 
+    db
+    ===
+    
     from base_bridge.db import models
     from base_bridge.db import fields
 
@@ -36,3 +39,30 @@
     
         name = fields.CharField(verbose_name=u'名称')
         desc = fields.TextField(verbose_name=u'描述')
+
+    views
+    ===
+    
+    View装饰器，调用之前需要重写以下函数：
+    - request_pre_process
+    - request_exception_process
+
+    from base_bridge.views.decorators import BaseDecorator
+    class BeforeView(BaseDecorator):
+        @classmethod
+        def request_pre_process(cls, request):
+            '''
+            Do something
+            '''
+            pass
+
+        @classmethod
+        def request_exception_process(cls, request, e):
+            '''
+            Do something
+            '''
+            pass
+
+    @BeforeView.catch_exception_without_parameters
+    def some_view(request):
+        pass
