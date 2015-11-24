@@ -31,15 +31,14 @@
     重新封装了一层原来的Model和fields，便于定制
     
     from base_bridge.db import models
-    from base_bridge.db import fields
 
 
     class Project(models.Model):
         class Meta:
             verbose_name = verbose_name_plural = u'Project'
     
-        name = fields.CharField(verbose_name=u'名称')
-        desc = fields.TextField(verbose_name=u'描述')
+        name = models.CharField(verbose_name=u'名称')
+        desc = models.TextField(verbose_name=u'描述')
 
     views
     ===
