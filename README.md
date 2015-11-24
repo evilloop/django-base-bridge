@@ -28,6 +28,7 @@
 
     db
     ===
+    重新封装了一层原来的Model和fields，便于定制
     
     from base_bridge.db import models
     from base_bridge.db import fields
@@ -42,6 +43,7 @@
 
     views
     ===
+    视图装饰器，记录日志和异常处理
     
     View装饰器，调用之前需要重写以下函数：
     - request_pre_process

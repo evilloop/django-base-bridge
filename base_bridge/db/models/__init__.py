@@ -1,15 +1,12 @@
 # coding=utf-8
+__author__ = 'Maple.Liu'
 
 import time
 import json
-
-from django.db import models
-from . import fields
-
-__author__ = 'Maple.Liu'
+from fields import *
 
 
-class Model(models.Model):
+class Model(raw_models.Model):
     class Meta:
         abstract = True
 
@@ -20,8 +17,8 @@ class Model(models.Model):
     datetime_format = '%Y-%m-%d %H:%m:%s'
 
     # 公共字段
-    add_timestamp = fields.BigIntegerField(verbose_name=u'入库时间', default=time.time)
-    update_timestamp = fields.BigIntegerField(verbose_name=u'更新时间', default=time.time)
+    add_timestamp = BigIntegerField(verbose_name=u'入库时间', default=time.time)
+    update_timestamp = BigIntegerField(verbose_name=u'更新时间', default=time.time)
 
     def as_dict(self, keys=None):
         if not keys:
