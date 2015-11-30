@@ -67,3 +67,10 @@
     @BeforeView.catch_exception_without_parameters
     def some_view(request):
         pass
+        
+    utils
+    =====
+    工具函数
+    
+    get_settings() 直接返回settings模块对象
+    response_as_json(request, obj, headers, before_response) 构造json返回客户端
