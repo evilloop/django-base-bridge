@@ -1,17 +1,9 @@
 # coding=utf-8
 
-import os
-import importlib
 from django.http import HttpResponse
 import json
 
 __author__ = 'Maple.Liu'
-
-
-def get_settings():
-    settings_module = os.environ['DJANGO_SETTINGS_MODULE']
-    settings = importlib.import_module(settings_module)
-    return settings
 
 
 def response_as_json(request, obj, headers=dict(), before_response=None):

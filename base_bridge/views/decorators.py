@@ -35,6 +35,7 @@ class BaseDecorator(object):
     def some_view(request):
         pass
     """
+
     @classmethod
     def request_pre_process(cls, request):
         """

@@ -72,5 +72,8 @@
     =====
     工具函数
     
+    from base_bridge.utils.settings import get_settings
     get_settings() 直接返回settings模块对象
+    
+    from base_bridge.utils.http import response_as_json
     response_as_json(request, obj, headers, before_response) 构造json返回客户端
