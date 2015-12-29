@@ -19,6 +19,7 @@ class Model(raw_models.Model):
     # 公共字段
     add_timestamp = BigIntegerField(verbose_name=u'入库时间', default=time.time)
     update_timestamp = BigIntegerField(verbose_name=u'更新时间', default=time.time)
+    is_deleted = BooleanField(verbose_name=u'是否已删除', default=False)
 
     def as_dict(self, keys=None):
         if not keys:
@@ -26,7 +27,7 @@ class Model(raw_models.Model):
         object_dict = dict()
         for key in keys:
             value = last_value = getattr(self, key)
-            if isinstance(value, models.Model):
+            if isinstance(value, raw_models.Model):
                 if isinstance(value, self.__class__):
                     last_value = value.__unicode__()
                 else:
