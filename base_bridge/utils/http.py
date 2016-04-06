@@ -2,6 +2,9 @@
 
 from django.http import HttpResponse
 import json
+import django
+from api.settings import logger
+from api.settings import client
 
 __author__ = 'Maple.Liu'
 
@@ -18,7 +21,10 @@ def response_as_json(request, obj, headers=dict(), before_response=None):
 
     - response_as_json(request, {'data':'test'}, headers={}, before_response=my_before_response) => HttpResponse
     """
-    response = HttpResponse(mimetype="application/json")
+    if django.get_version() >= '1.6':
+        response = HttpResponse(content_type="application/json")
+    else:
+        response = HttpResponse(mimetype='application/json')
     res = json.dumps(obj)
     response.write(res)
     if 'Access-Control-Allow-Origin' not in headers.keys():
@@ -27,4 +33,8 @@ def response_as_json(request, obj, headers=dict(), before_response=None):
         response[k] = v
     if before_response is not None:
         before_response(request)
+    if obj['code'] != 'OK':
+        event_type = 'raven.events.Message'
+        message = obj.get('msg', '无消息')
+        client.capture(event_type=event_type, message=message, request=request)
     return response

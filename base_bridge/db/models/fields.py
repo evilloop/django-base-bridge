@@ -136,8 +136,8 @@ class URLField(raw_models.URLField):
 
 
 class ForeignKey(raw_models.ForeignKey):
-    def __init__(self, to, to_field=None, **kwargs):
-        super(ForeignKey, self).__init__(to, to_field, **kwargs)
+    def __init__(self, to=None, on_delete=None, **kwargs):
+        super(ForeignKey, self).__init__(to, on_delete, **kwargs)
 
 
 class ManyToManyField(raw_models.ManyToManyField):
