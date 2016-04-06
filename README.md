@@ -7,7 +7,7 @@
 # 依赖
 
 * Python (2.7.X)
-* Django (1.7)
+* Django (1.7+)
 
 # 安装
 
